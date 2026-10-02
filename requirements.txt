@@ -1,0 +1,3 @@
+google-genai==2.27.0
+python-dotenv==1.2.4
+stramlit==1.64.0
