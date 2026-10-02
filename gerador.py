@@ -10,8 +10,8 @@ API_KEY= os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=API_KEY)
 
 class Gerador:
-    def __init__(self):
-        self.model = "gemini-3.5-flash"
+    def __init__(self, modelo):
+        self.model = modelo
     
     def gerar_perguntas(self, tema: str) -> dict:
         prompt = {
