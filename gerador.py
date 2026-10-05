@@ -29,7 +29,7 @@ class Gerador:
         }
     
         try:
-            resposta = client.models.generate_content(model="gemini-3.5-flash", contents=str(prompt))
+            resposta = client.models.generate_content(self.model, contents=str(prompt))
             return resposta
         
         except Exception as e:
