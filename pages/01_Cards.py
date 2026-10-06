@@ -3,7 +3,21 @@ import json
 from random import choice
 
 
+st.markdown("""
+# 📚 Meus Cards
+
+Carregue um arquivo de cards que você já tem e comece a estudar.
+
+**Formato aceito:** arquivo `.json`
+
+> 💡 Ainda não tem um arquivo? Crie seus cards em **✨ Gerar Cards com IA** ou **📄 Gerar Cards com Arquivo**. Os cards gerados podem ser salvos e carregados aqui depois.
+
+""")
+
+
 arquivo = st.file_uploader("Carregue seu arquivo", type=".json")
+
+
 
 
 # =========================
@@ -54,3 +68,6 @@ if st.session_state.get("carregado", False):
     </div>
     """)
 
+    if st.button('Outra Pergunta'):
+        st.session_state["pergunta"] = choice(list(st.session_state["dados"].keys()))
+        st.rerun()
