@@ -24,6 +24,22 @@ gerador = Gerador("gemini-3.5-flash")
 # INTERFACE
 # ============================================================
 
+st.markdown("""
+# ✨ Gerar Cards com IA
+
+Digite um tema e a IA cria cards de perguntas e respostas para você estudar.
+
+**Exemplos de temas:**
+- Revolução Francesa
+- Fundamentos de Python
+- Anatomia do coração
+- Verbos irregulares em inglês
+
+> 💡 **Dica:** quanto mais específico o tema, melhores os cards. Em vez de "História", tente "Causas da Primeira Guerra Mundial".
+
+> ℹ️ Os cards são gerados por IA. Vale conferir as respostas, principalmente em assuntos importantes.
+""")
+
 tema = st.text_input("Digite o tema escolhido")
 
 
@@ -51,7 +67,13 @@ if st.button("Gerar cards") and tema:
 
 try:
     if st.session_state["dados"]:
+        st.markdown("""
+        ## ✅ Seus cards estão prontos!
 
+Confira as perguntas e respostas abaixo antes de estudar. Como foram geradas por IA, vale verificar se estão corretas.
+
+Quando estiver satisfeito, baixe o arquivo e carregue-o na página **📚 Cards** para começar a estudar.
+        """)
         # st.write(st.session_state["dados"])
         for i,kv in enumerate(st.session_state["dados"].items()):
             st.markdown(f"# Pergunta {i+1}")
@@ -68,7 +90,7 @@ try:
 
             nome_arquivo = st.text_input(
                 "Nome do Arquivo"
-            )
+            ).replace(' ', '_')
             st.write(f'{nome_arquivo}.json')
             st.download_button(
                 label="Download",
