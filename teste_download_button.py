@@ -64,3 +64,27 @@ if st.session_state.get("carregado", False):
         st.session_state["pergunta"] = choice(list(dados.keys()))
 
         st.rerun()
+
+    with st.popover("Salvar Arquivo"):
+
+            nome_arquivo = st.text_input(
+                "Nome do Arquivo",
+            )
+            st.write(f'{nome_arquivo}.json')
+            st.download_button(
+                label="Download",
+
+                data=json.dumps(
+                    st.session_state["dados"],
+                    indent=4,
+                    ensure_ascii=False
+                ),
+
+                file_name=f"{nome_arquivo}.json",
+
+                mime="application/json",
+
+                icon=":material/download:",
+
+                width=600
+            )
